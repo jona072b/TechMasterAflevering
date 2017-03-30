@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Tech. 1</title>
+    <title>The Web-app</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
@@ -20,7 +20,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
 <div class="container">
-    <H1 class="text-center">My First Web App</H1>
+    <H1 class="text-center">Login site</H1>
 
     <div class="wrapper">
         <form class="form-signin" method="POST" action="Fredlet">

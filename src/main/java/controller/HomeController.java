@@ -1,5 +1,7 @@
 package controller;
 
+import Model.Authenticator;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +29,22 @@ public class HomeController extends HttpServlet {
         logger.log(Level.INFO, "Password: " + password);
         logger.log(Level.INFO, "Checkbox: " + request.getParameter("rememberMe"));
 
+        Authenticator auth = new Authenticator();
+        String login = auth.authenticate(username, password);
+        if (login.equals("succesAdmin")){
+            RequestDispatcher rd = request.getRequestDispatcher("/loginSuccessAdmin.jsp");
+            rd.forward(request, response);
+        } else if (login.equals("succesUser")){
+            RequestDispatcher rd = request.getRequestDispatcher("/loginSuccess.jsp");
+            rd.forward(request, response);
+        } else{
+            logger.log(Level.INFO, "creds invalid");
+            request.setAttribute("errorMessage", "true");
+            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
+        }
 
-        if (username.equals(username)) {
+        /*if (username.equals(username)) {
             //TODO: Common for both user and admin and username to the request
 
 
@@ -48,7 +64,7 @@ public class HomeController extends HttpServlet {
             request.setAttribute("errorMessage", "true");
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
-        }
+        }*/
 
     }
 
